@@ -53,6 +53,10 @@
 						<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
 						<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
 						<arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+						<arg>-Ainfer=ajava</arg>
+						<arg>-Awarns</arg>
+						<arg>-AshowPrefixInWarningMessages</arg>
+						<arg>-Aajava=/tmp/WPITEMP-Nameless-API</arg>
 					</compilerArgs>
 					<showWarnings>true</showWarnings>
 				</configuration>
