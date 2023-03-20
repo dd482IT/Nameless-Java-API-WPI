@@ -8,15 +8,15 @@ import java.util.UUID;
 
 public class DetailedMinecraftIntegrationData extends DetailedIntegrationData implements IMinecraftIntegrationData {
 
-	private final @NonNull UUID uuid;
+	private final UUID uuid;
 
-	public DetailedMinecraftIntegrationData(final @NonNull JsonObject json) {
+	public DetailedMinecraftIntegrationData(final JsonObject json) {
 		super(json);
 		this.uuid = NamelessAPI.websiteUuidToJavaUuid(this.identifier());
 	}
 
 	@Override
-	public final @NonNull UUID uuid() {
+	public final UUID uuid() {
 		return this.uuid;
 	}
 }

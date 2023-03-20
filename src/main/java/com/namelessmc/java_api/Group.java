@@ -9,11 +9,11 @@ import java.util.Objects;
 public class Group implements Comparable<Group> {
 
 	private final int id;
-	private final @NonNull String name;
+	private final String name;
 	private final int order;
 	private final boolean staff;
 
-	Group(final @NonNull JsonObject group) {
+	Group(final JsonObject group) {
 		this.id = group.get("id").getAsInt();
 		this.name = group.get("name").getAsString();
 		this.order = group.get("order").getAsInt();
@@ -24,7 +24,7 @@ public class Group implements Comparable<Group> {
 		return this.id;
 	}
 
-	public @NonNull String getName() {
+	public String getName() {
 		return this.name;
 	}
 
@@ -42,7 +42,7 @@ public class Group implements Comparable<Group> {
 	}
 
 	@Override
-	public boolean equals(final @Nullable Object other) {
+	public boolean equals(final Object other) {
 		return other instanceof Group &&
 				((Group) other).id == this.id;
 	}
@@ -53,7 +53,7 @@ public class Group implements Comparable<Group> {
 	}
 
 	@Override
-	public @NonNull String toString() {
+	public String toString() {
 		return "Group[id=" + id + ",name=" + name + "]";
 	}
 

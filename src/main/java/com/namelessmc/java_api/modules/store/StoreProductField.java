@@ -11,7 +11,7 @@ public class StoreProductField {
 	private final int typeId; // TODO enum
 	private final boolean required;
 	private final int min;
-	private final @Nullable String regex;
+	private final String regex;
 	private final String defaultValue;
 
 	public StoreProductField(JsonObject json) {
@@ -45,7 +45,7 @@ public class StoreProductField {
 		return this.min;
 	}
 
-	public @Nullable String regex() {
+	public String regex() {
 		return this.regex;
 	}
 

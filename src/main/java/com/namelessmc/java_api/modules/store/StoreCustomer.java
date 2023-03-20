@@ -12,9 +12,9 @@ public class StoreCustomer {
 
 	private final NamelessAPI api;
 	private final int id;
-	private final @Nullable Integer userId;
-	private final @Nullable String username;
-	private final @Nullable String identifier;
+	private final Integer userId;
+	private final String username;
+	private final String identifier;
 
 	StoreCustomer(NamelessAPI api, JsonObject json) {
 		this.api = api;
@@ -34,19 +34,19 @@ public class StoreCustomer {
 		return this.id;
 	}
 
-	public @Nullable NamelessUser user() throws NamelessException {
+	public NamelessUser user() throws NamelessException {
 		return this.userId != null ? this.api.user(this.userId) : null;
 	}
 
-	public @Nullable String username() {
+	public String username() {
 		return this.username;
 	}
 
-	public @Nullable String identifier() {
+	public String identifier() {
 		return this.identifier;
 	}
 
-	public @Nullable UUID identifierAsUuid() {
+	public UUID identifierAsUuid() {
 		// Unlike NamelessMC, the store module sends UUIDs with dashes
 		return this.identifier != null ? UUID.fromString(this.identifier) : null;
 	}

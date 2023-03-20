@@ -11,16 +11,16 @@ import java.util.*;
 
 public class FilteredUserListBuilder {
 
-	private final @NonNull NamelessAPI api;
-	private @Nullable Map<UserFilter<?>, Object> filters;
-	private @NonNull String operator = "AND";
+	private final NamelessAPI api;
+	private Map<UserFilter<?>, Object> filters;
+	private String operator = "AND";
 
-	FilteredUserListBuilder(@NonNull NamelessAPI api) {
+	FilteredUserListBuilder(NamelessAPI api) {
 		this.api = api;
 	}
 
-	public <T> @NonNull FilteredUserListBuilder withFilter(final @NonNull UserFilter<T> filter,
-														   final @NonNull T value) {
+	public <T> FilteredUserListBuilder withFilter(final UserFilter<T> filter,
+														   final T value) {
 		if (filters == null) {
 			filters = new HashMap<>();
 		}
@@ -32,12 +32,12 @@ public class FilteredUserListBuilder {
 		return this;
 	}
 
-	public @NonNull FilteredUserListBuilder all() {
+	public FilteredUserListBuilder all() {
 		this.operator = "AND";
 		return this;
 	}
 
-	public @NonNull FilteredUserListBuilder any() {
+	public FilteredUserListBuilder any() {
 		this.operator = "OR";
 		return this;
 	}
@@ -65,7 +65,7 @@ public class FilteredUserListBuilder {
 		return this.api.requests().get("users", parameters);
 	}
 
-	public @NonNull List<@NonNull NamelessUser> makeRequest() throws NamelessException {
+	public List<NamelessUser> makeRequest() throws NamelessException {
 		final JsonObject response = this.makeRawRequest();
 		final JsonArray array = response.getAsJsonArray("users");
 		final List<NamelessUser> users = new ArrayList<>(array.size());

@@ -9,7 +9,7 @@ public interface LanguageEntity {
 
 	String rawLocale() throws NamelessException;
 
-	default @NonNull Locale locale() throws NamelessException {
+	default Locale locale() throws NamelessException {
 		final String language = this.rawLocale();
 		final String[] langSplit = language.split("_");
 		if (langSplit.length != 2) {

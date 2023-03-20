@@ -5,27 +5,27 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class IntegrationData {
 
-	private final @NonNull String integrationType;
-	private final @NonNull String identifier;
-	private final @NonNull String username;
+	private final String integrationType;
+	private final String identifier;
+	private final String username;
 
-	public IntegrationData(final @NonNull String integrationType,
-					final @NonNull String identifier,
-					final @NonNull String username) {
+	public IntegrationData(final String integrationType,
+					final String identifier,
+					final String username) {
 		this.integrationType = integrationType;
 		this.identifier = identifier;
 		this.username = username;
 	}
 
-	public final @NonNull String type(@UnknownInitialization(IntegrationData.class) IntegrationData this) {
+	public final String type(IntegrationData this) {
 		return this.integrationType;
 	}
 
-	public final @NonNull String identifier(@UnknownInitialization(IntegrationData.class) IntegrationData this) {
+	public final String identifier(IntegrationData this) {
 		return this.identifier;
 	}
 
-	public final @NonNull String username(@UnknownInitialization(IntegrationData.class) IntegrationData this) {
+	public final String username(IntegrationData this) {
 		return this.username;
 	}
 

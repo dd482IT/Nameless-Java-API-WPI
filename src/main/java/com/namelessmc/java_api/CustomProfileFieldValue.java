@@ -5,19 +5,19 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class CustomProfileFieldValue {
 
-	private final @NonNull CustomProfileField field;
-	private final @Nullable String value;
+	private final CustomProfileField field;
+	private final String value;
 
-	CustomProfileFieldValue(@NonNull CustomProfileField field, @Nullable String value) {
+	CustomProfileFieldValue(CustomProfileField field, String value) {
 		this.field = field;
 		this.value = value;
 	}
 
-	public @NonNull CustomProfileField field() {
+	public CustomProfileField field() {
 		return this.field;
 	}
 
-	public @Nullable String value() {
+	public String value() {
 		return value;
 	}
 

@@ -7,9 +7,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 public class VerificationInfo {
 
 	private final boolean verified;
-	private final @NonNull JsonObject json;
+	private final JsonObject json;
 
-	VerificationInfo(final boolean verified, final @NonNull JsonObject json) {
+	VerificationInfo(final boolean verified, final JsonObject json) {
 		this.verified = verified;
 		this.json = json;
 	}
@@ -18,7 +18,7 @@ public class VerificationInfo {
 		return this.verified;
 	}
 
-	public boolean isVerifiedCustom(final @NonNull String name) {
+	public boolean isVerifiedCustom(final String name) {
 		final JsonElement e = this.json.get(name);
 		if (e == null) {
 			throw new UnsupportedOperationException("The API did not return verification for '" + name + "'");

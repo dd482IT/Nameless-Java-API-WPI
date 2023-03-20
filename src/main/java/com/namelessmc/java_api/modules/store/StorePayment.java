@@ -16,7 +16,7 @@ public class StorePayment {
 	private final int id;
 	private final int orderId;
 	private final int gatewayId;
-	private final @Nullable String transaction;
+	private final String transaction;
 	private final String amount;
 	private final String currency;
 	private final String fee;
@@ -60,7 +60,7 @@ public class StorePayment {
 		return gatewayId;
 	}
 
-	public @Nullable String transaction() {
+	public String transaction() {
 		return transaction;
 	}
 

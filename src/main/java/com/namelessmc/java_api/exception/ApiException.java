@@ -8,7 +8,7 @@ public class ApiException extends NamelessException {
 
 	private final ApiError apiError;
 
-	public ApiException(final ApiError apiError, final @Nullable String meta) {
+	public ApiException(final ApiError apiError, final String meta) {
 		super("API error " + apiError + (meta == null ? "" : " (meta: " + meta + ")"));
 		this.apiError = apiError;
 	}

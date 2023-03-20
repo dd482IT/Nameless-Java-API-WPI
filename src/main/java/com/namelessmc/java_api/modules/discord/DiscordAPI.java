@@ -27,7 +27,7 @@ public class DiscordAPI {
 	 * @param url Discord bot URL
 	 * @see #updateBotSettings(URL, long, String, long)
 	 */
-	public void updateBotUrl(final @NonNull URL url) throws NamelessException {
+	public void updateBotUrl(final URL url) throws NamelessException {
 		Objects.requireNonNull(url, "Bot url is null");
 
 		final JsonObject json = new JsonObject();
@@ -41,7 +41,7 @@ public class DiscordAPI {
 	 * @param userId Bot user id
 	 * @see #updateBotSettings(URL, long, String, long)
 	 */
-	public void updateBotUser(final @NonNull String username, final long userId) throws NamelessException {
+	public void updateBotUser(final String username, final long userId) throws NamelessException {
 		Objects.requireNonNull(username, "Bot username is null");
 
 		final JsonObject json = new JsonObject();
@@ -71,9 +71,9 @@ public class DiscordAPI {
 	 * @see #updateGuildId(long)
 	 * @see #updateBotUser(String, long)
 	 */
-	public void updateBotSettings(final @NonNull URL url,
+	public void updateBotSettings(final URL url,
 									  final long guildId,
-									  final @NonNull String username,
+									  final String username,
 									  final long userId) throws NamelessException {
 		Objects.requireNonNull(url, "Bot url is null");
 		Objects.requireNonNull(username, "Bot username is null");
@@ -93,7 +93,7 @@ public class DiscordAPI {
 	 * @see #updateDiscordUsernames(long[], String[])
 	 */
 	public void updateDiscordUsername(final long discordUserId,
-									  final @NonNull String discordUsername)
+									  final String discordUsername)
 			throws NamelessException {
 		Objects.requireNonNull(discordUsername, "Discord username is null");
 
@@ -113,8 +113,8 @@ public class DiscordAPI {
 	 * @param discordUsernames New Discord [username#tag]s
 	 * @see #updateDiscordUsername(long, String)
 	 */
-	public void updateDiscordUsernames(final long@NonNull[] discordUserIds,
-									   final  @NonNull String@NonNull[] discordUsernames)
+	public void updateDiscordUsernames(final long[] discordUserIds,
+									   final  String[] discordUsernames)
 			throws NamelessException {
 		Objects.requireNonNull(discordUserIds, "User ids array is null");
 		Objects.requireNonNull(discordUsernames, "Usernames array is null");
@@ -143,7 +143,7 @@ public class DiscordAPI {
 	 * Send list of Discord roles to the website for populating the dropdown in StaffCP > API > Group sync
 	 * @param discordRoles Map of Discord roles, key is role id, value is role name
 	 */
-	public void updateRoleList(final @NonNull Map<Long, String> discordRoles) throws NamelessException {
+	public void updateRoleList(final Map<Long, String> discordRoles) throws NamelessException {
 		final JsonArray roles = new JsonArray();
 		discordRoles.forEach((id, name) -> {
 			final JsonObject role = new JsonObject();

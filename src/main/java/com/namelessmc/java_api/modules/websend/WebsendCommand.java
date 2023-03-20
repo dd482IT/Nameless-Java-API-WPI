@@ -5,20 +5,20 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class WebsendCommand {
 
-	private final @Positive int id;
-	private final @NonNull String commandLine;
+	private final int id;
+	private final String commandLine;
 
-	public WebsendCommand(final @Positive int id,
-						  final @NonNull String commandLine) {
+	public WebsendCommand(final int id,
+						  final String commandLine) {
 		this.id = id;
 		this.commandLine = commandLine;
 	}
 
-	public @Positive int id() {
+	public int id() {
 		return id;
 	}
 
-	public @NonNull String command() {
+	public String command() {
 		return this.commandLine;
 	}
 

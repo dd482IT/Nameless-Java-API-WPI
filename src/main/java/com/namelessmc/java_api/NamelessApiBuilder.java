@@ -25,21 +25,21 @@ public class NamelessApiBuilder {
 		SSL_PARAMETERS.setProtocols(new String[]{"TLSv1.3", "TLSv1.2"});
 	}
 
-	private final @NonNull URL apiUrl;
-	private final @NonNull String apiKey;
+	private final URL apiUrl;
+	private final String apiKey;
 
 	private Duration timeout = Duration.ofSeconds(10);
 	private int responseSizeLimit = 32*1024*1024;
 	private String userAgent = "Nameless-Java-API";
-	private @Nullable ApiLogger debugLogger = null;
-	private @Nullable ProxySelector proxy = null;
-	private @Nullable Authenticator authenticator = null;
-	private HttpClient.@Nullable Version httpVersion = null;
+	private ApiLogger debugLogger = null;
+	private ProxySelector proxy = null;
+	private Authenticator authenticator = null;
+	private HttpClient.Version httpVersion = null;
 
 	private boolean pettyJsonRequests = false;
 
-	NamelessApiBuilder(final @NonNull URL apiUrl,
-					   final @NonNull String apiKey) {
+	NamelessApiBuilder(final URL apiUrl,
+					   final String apiKey) {
 		try {
 			this.apiUrl = apiUrl.toString().endsWith("/") ? apiUrl : new URL(apiUrl + "/");
 		} catch (MalformedURLException e) {
@@ -63,7 +63,7 @@ public class NamelessApiBuilder {
 		return this;
 	}
 
-	public NamelessApiBuilder customDebugLogger(final @Nullable ApiLogger debugLogger) {
+	public NamelessApiBuilder customDebugLogger(final ApiLogger debugLogger) {
 		this.debugLogger = debugLogger;
 		return this;
 	}
@@ -73,12 +73,12 @@ public class NamelessApiBuilder {
 		return this;
 	}
 
-	public NamelessApiBuilder withProxy(final @Nullable ProxySelector proxy) {
+	public NamelessApiBuilder withProxy(final ProxySelector proxy) {
 		this.proxy = proxy;
 		return this;
 	}
 
-	public NamelessApiBuilder authenticator(final @Nullable Authenticator authenticator) {
+	public NamelessApiBuilder authenticator(final Authenticator authenticator) {
 		this.authenticator = authenticator;
 		return this;
 	}
@@ -93,7 +93,7 @@ public class NamelessApiBuilder {
 		return this;
 	}
 
-	public NamelessApiBuilder httpVersion(final HttpClient. @Nullable Version httpVersion) {
+	public NamelessApiBuilder httpVersion(final HttpClient. Version httpVersion) {
 		this.httpVersion = httpVersion;
 		return this;
 	}

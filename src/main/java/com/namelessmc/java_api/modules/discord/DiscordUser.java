@@ -18,7 +18,7 @@ public class DiscordUser {
 		user.api().ensureModuleInstalled(NamelessModule.DISCORD_INTEGRATION);
 	}
 
-	public void updateDiscordRoles(final long@NonNull [] roleIds) throws NamelessException {
+	public void updateDiscordRoles(final long[] roleIds) throws NamelessException {
 		final JsonObject post = new JsonObject();
 		post.addProperty("user", this.user.id());
 		post.add("roles", this.requests.gson().toJsonTree(roleIds));

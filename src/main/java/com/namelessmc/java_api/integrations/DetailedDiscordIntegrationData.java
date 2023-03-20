@@ -7,7 +7,7 @@ public class DetailedDiscordIntegrationData extends DetailedIntegrationData impl
 
 	private final long idLong;
 
-	public DetailedDiscordIntegrationData(final @NonNull JsonObject json) {
+	public DetailedDiscordIntegrationData(final JsonObject json) {
 		super(json);
 		this.idLong = Long.parseLong(this.identifier());
 	}

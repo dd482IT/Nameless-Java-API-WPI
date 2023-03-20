@@ -85,7 +85,7 @@ public enum ApiError {
 		}
 	}
 
-	public static @Nullable ApiError fromString(final String string) {
+	public static ApiError fromString(final String string) {
 		return FROM_STRING.get(string);
 	}
 

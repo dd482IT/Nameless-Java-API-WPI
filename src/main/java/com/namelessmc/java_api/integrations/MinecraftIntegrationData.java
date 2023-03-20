@@ -7,15 +7,15 @@ import java.util.UUID;
 
 public class MinecraftIntegrationData extends IntegrationData implements IMinecraftIntegrationData {
 
-	private final @NonNull UUID uuid;
+	private final UUID uuid;
 
-	public MinecraftIntegrationData(final @NonNull UUID uuid,
-									final @NonNull String username) {
+	public MinecraftIntegrationData(final UUID uuid,
+									final String username) {
 		super(StandardIntegrationTypes.MINECRAFT, NamelessAPI.javaUuidToWebsiteUuid(uuid), username);
 		this.uuid = uuid;
 	}
 
-	public final @NonNull UUID uuid() {
+	public final UUID uuid() {
 		return this.uuid;
 	}
 

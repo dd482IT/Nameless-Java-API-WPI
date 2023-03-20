@@ -26,33 +26,33 @@ import java.util.stream.StreamSupport;
 
 public final class NamelessAPI {
 
-	private final @NonNull RequestHandler requests;
+	private final RequestHandler requests;
 
 	// Not actually used by the Nameless Java API, but could be useful to applications using it.
-	private final @NonNull URL apiUrl;
-	private final @NonNull String apiKey;
+	private final URL apiUrl;
+	private final String apiKey;
 
 	private static final long CACHED_WEBSITE_INFO_VALIDITY = 60_000;
-	private @Nullable Website cachedWebsiteInfo = null;
+	private Website cachedWebsiteInfo = null;
 	private long cachedWebsiteInfoTime = 0;
 
-	NamelessAPI(final @NonNull RequestHandler requests,
-				final @NonNull URL apiUrl,
-				final @NonNull String apiKey) {
+	NamelessAPI(final RequestHandler requests,
+				final URL apiUrl,
+				final String apiKey) {
 		this.requests = Objects.requireNonNull(requests, "Request handler is null");
 		this.apiUrl = apiUrl;
 		this.apiKey = apiKey;
 	}
 
-	public @NonNull RequestHandler requests() {
+	public RequestHandler requests() {
 		return this.requests;
 	}
 
-	public @NonNull URL apiUrl() {
+	public URL apiUrl() {
 		return this.apiUrl;
 	}
 
-	public @NonNull String apiKey() {
+	public String apiKey() {
 		return this.apiKey;
 	}
 
@@ -61,7 +61,7 @@ public final class NamelessAPI {
 	 * @return List of announcements
 	 */
 
-	public @NonNull List<@NonNull Announcement> announcements() throws NamelessException {
+	public List<Announcement> announcements() throws NamelessException {
 		final JsonObject response = this.requests.get("announcements");
 		return announcements(response);
 	}
@@ -71,7 +71,7 @@ public final class NamelessAPI {
 	 * @param response Announcements json API response
 	 * @return List of {@link Announcement} objects
 	 */
-	static @NonNull List<@NonNull Announcement> announcements(final @NonNull JsonObject response) {
+	static List<Announcement> announcements(final JsonObject response) {
 		return StreamSupport.stream(response.getAsJsonArray("announcements").spliterator(), false)
 					.map(JsonElement::getAsJsonObject)
 					.map(Announcement::new)
@@ -82,7 +82,7 @@ public final class NamelessAPI {
 	 * Send Minecraft server information to the website. Currently, the exact JSON contents are undocumented.
 	 * @param jsonData Json data to submit
 	 */
-	public void submitServerInfo(final @NonNull JsonObject jsonData) throws NamelessException {
+	public void submitServerInfo(final JsonObject jsonData) throws NamelessException {
 		this.requests.post("minecraft/server-info", jsonData);
 	}
 
@@ -124,7 +124,7 @@ public final class NamelessAPI {
 		return website;
 	}
 
-	public @Nullable Website websiteIfCached() {
+	public Website websiteIfCached() {
 		return this.cachedWebsiteInfo;
 	}
 
@@ -132,7 +132,7 @@ public final class NamelessAPI {
 		return new FilteredUserListBuilder(this);
 	}
 
-	public @Nullable NamelessUser userAsNullable(NamelessUser user) throws NamelessException {
+	public NamelessUser userAsNullable(NamelessUser user) throws NamelessException {
 		try {
 			user.userInfo();
 			return user;
@@ -144,27 +144,27 @@ public final class NamelessAPI {
 		}
 	}
 
-	public @Nullable NamelessUser user(final int id) throws NamelessException {
+	public NamelessUser user(final int id) throws NamelessException {
 		return userAsNullable(userLazy(id));
 	}
 
-	public @Nullable NamelessUser userByUsername(final @NonNull String username) throws NamelessException {
+	public NamelessUser userByUsername(final String username) throws NamelessException {
 		return userAsNullable(userByUsernameLazy(username));
 	}
 
-	public @Nullable NamelessUser userByMinecraftUuid(final @NonNull UUID uuid) throws NamelessException {
+	public NamelessUser userByMinecraftUuid(final UUID uuid) throws NamelessException {
 		return userAsNullable(userByMinecraftUuidLazy(uuid));
 	}
 
-	public @Nullable NamelessUser userByMinecraftUsername(final @NonNull String username) throws NamelessException {
+	public NamelessUser userByMinecraftUsername(final String username) throws NamelessException {
 		return userAsNullable(userByMinecraftUsernameLazy(username));
 	}
 
-	public @Nullable NamelessUser userByDiscordId(final long id) throws NamelessException {
+	public NamelessUser userByDiscordId(final long id) throws NamelessException {
 		return userAsNullable(userByDiscordIdLazy(id));
 	}
 
-	public @Nullable NamelessUser userByDiscordUsername(final @NonNull String username) throws NamelessException {
+	public NamelessUser userByDiscordUsername(final String username) throws NamelessException {
 		return userAsNullable(userByDiscordUsernameLazy(username));
 	}
 
@@ -173,31 +173,31 @@ public final class NamelessAPI {
 	 * @param id NamelessMC user id
 	 * @return Nameless user object, never null
 	 */
-	public @NonNull NamelessUser userLazy(final int id) {
+	public NamelessUser userLazy(final int id) {
 		return new NamelessUser(this, id);
 	}
 
-	public @NonNull NamelessUser userLazy(final @NonNull String userTransformer) {
+	public NamelessUser userLazy(final String userTransformer) {
 		return new NamelessUser(this, userTransformer);
 	}
 
-	public @NonNull NamelessUser userByUsernameLazy(final @NonNull String username) {
+	public NamelessUser userByUsernameLazy(final String username) {
 		return userLazy("username:" + username);
 	}
 
-	public @NonNull NamelessUser userByMinecraftUuidLazy(final @NonNull UUID uuid) {
+	public NamelessUser userByMinecraftUuidLazy(final UUID uuid) {
 		return byIntegrationIdentifierLazy(StandardIntegrationTypes.MINECRAFT, javaUuidToWebsiteUuid(uuid));
 	}
 
-	public @NonNull NamelessUser userByMinecraftUsernameLazy(final @NonNull String username) {
+	public NamelessUser userByMinecraftUsernameLazy(final String username) {
 		return byIntegrationUsernameLazy(StandardIntegrationTypes.MINECRAFT, username);
 	}
 
-	public @NonNull NamelessUser userByDiscordIdLazy(final long id) {
+	public NamelessUser userByDiscordIdLazy(final long id) {
 		return byIntegrationIdentifierLazy(StandardIntegrationTypes.DISCORD, String.valueOf(id));
 	}
 
-	public @NonNull NamelessUser userByDiscordUsernameLazy(final @NonNull String username) {
+	public NamelessUser userByDiscordUsernameLazy(final String username) {
 		return byIntegrationUsernameLazy(StandardIntegrationTypes.DISCORD, username);
 	}
 
@@ -214,7 +214,7 @@ public final class NamelessAPI {
 	 * @param id Group id
 	 * @return Group or null if it doesn't exist
 	 */
-	public @Nullable Group group(final int id) throws NamelessException {
+	public Group group(final int id) throws NamelessException {
 		final JsonObject response = this.requests.get("groups", "id", id);
 		final JsonArray jsonArray = response.getAsJsonArray("groups");
 		if (jsonArray.size() == 1) {
@@ -231,7 +231,7 @@ public final class NamelessAPI {
 	 * @param name NamelessMC groups name
 	 * @return List of groups with this name, empty if there are no groups with this name.
 	 */
-	public List<Group> group(final @NonNull String name) throws NamelessException {
+	public List<Group> group(final String name) throws NamelessException {
 		Objects.requireNonNull(name, "Group name is null");
 		final JsonObject response = this.requests.get("groups", "name", name);
 		return groupListFromJsonArray(response.getAsJsonArray("groups"));
@@ -255,7 +255,7 @@ public final class NamelessAPI {
 				.toArray();
 	}
 
-	private @NonNull List<Group> groupListFromJsonArray(final @NonNull JsonArray array) {
+	private List<Group> groupListFromJsonArray(final JsonArray array) {
 		return StreamSupport.stream(array.spliterator(), false)
 				.map(JsonElement::getAsJsonObject)
 				.map(Group::new)
@@ -273,9 +273,9 @@ public final class NamelessAPI {
 	 * @return Email verification disabled: A link which the user needs to click to complete registration
 	 * <br>Email verification enabled: An empty string (the user needs to check their email to complete registration)
 	 */
-	public Optional<String> registerUser(final @NonNull String username,
-												  final @NonNull String email,
-												  final @NonNull IntegrationData@Nullable ... integrationData)
+	public Optional<String> registerUser(final String username,
+												  final String email,
+												  final IntegrationData... integrationData)
 			throws NamelessException {
 
 		Objects.requireNonNull(username, "Username is null");
@@ -304,8 +304,8 @@ public final class NamelessAPI {
 		}
 	}
 
-	public void verifyIntegration(final @NonNull IntegrationData integrationData,
-								   final @NonNull String verificationCode) throws NamelessException {
+	public void verifyIntegration(final IntegrationData integrationData,
+								   final String verificationCode) throws NamelessException {
 		JsonObject data = new JsonObject();
 		data.addProperty("integration", integrationData.type());
 		data.addProperty("identifier", integrationData.identifier());
@@ -346,7 +346,7 @@ public final class NamelessAPI {
 	 * @param uuid UUID without dashes
 	 * @return UUID with dashes
 	 */
-	public static @NonNull UUID websiteUuidToJavaUuid(final @NonNull String uuid) {
+	public static UUID websiteUuidToJavaUuid(final String uuid) {
 		Objects.requireNonNull(uuid, "UUID string is null");
 		// Website sends UUIDs without dashes, so we can't use UUID#fromString
 		// https://stackoverflow.com/a/30760478
@@ -359,12 +359,12 @@ public final class NamelessAPI {
 		}
 	}
 
-	public static @NonNull String javaUuidToWebsiteUuid(final @NonNull UUID uuid) {
+	public static String javaUuidToWebsiteUuid(final UUID uuid) {
 		return uuid.toString().replace("-", "");
 	}
 
-	public static @NonNull NamelessApiBuilder builder(final @NonNull URL apiUrl,
-											 final @NonNull String apiKey) {
+	public static NamelessApiBuilder builder(final URL apiUrl,
+											 final String apiKey) {
 		return new NamelessApiBuilder(apiUrl, apiKey);
 	}
 

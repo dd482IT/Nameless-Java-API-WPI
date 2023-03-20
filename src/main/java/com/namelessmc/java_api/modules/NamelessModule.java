@@ -20,9 +20,9 @@ public class NamelessModule {
 
 	private final String name;
 	private final boolean included;
-	private final @Nullable String downloadLink;
+	private final String downloadLink;
 
-	private NamelessModule(String name, boolean included, @Nullable String downloadLink) {
+	private NamelessModule(String name, boolean included, String downloadLink) {
 		this.name = name;
 		this.included = included;
 		this.downloadLink = downloadLink;
@@ -36,7 +36,7 @@ public class NamelessModule {
 		return this.included;
 	}
 
-	public @Nullable String downloadLink() {
+	public String downloadLink() {
 		return downloadLink;
 	}
 
@@ -76,7 +76,7 @@ public class NamelessModule {
 	}
 
 	@Override
-	public boolean equals(final @Nullable Object obj) {
+	public boolean equals(final Object obj) {
 		return obj instanceof NamelessModule &&
 				((NamelessModule) obj).name().equals(this.name);
 	}

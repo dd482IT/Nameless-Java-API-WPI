@@ -31,16 +31,16 @@ import java.util.stream.Collectors;
 
 public class RequestHandler {
 
-	private final @NonNull URL apiUrl;
-	private final @NonNull Methanol httpClient;
-	private final @Nullable ApiLogger debugLogger;
-	private final @NonNull Gson gson;
+	private final URL apiUrl;
+	private final Methanol httpClient;
+	private final ApiLogger debugLogger;
+	private final Gson gson;
 	private final int responseLengthLimit;
 
-	RequestHandler(final @NonNull URL apiUrl,
-				   final @NonNull Methanol httpClient,
-				   final @NonNull Gson gson,
-				   final @Nullable ApiLogger debugLogger,
+	RequestHandler(final URL apiUrl,
+				   final Methanol httpClient,
+				   final Gson gson,
+				   final ApiLogger debugLogger,
 				   final int responseLengthLimit) {
 		this.apiUrl = Objects.requireNonNull(apiUrl, "API URL is null");
 		this.httpClient = Objects.requireNonNull(httpClient, "http client is null");
@@ -59,7 +59,7 @@ public class RequestHandler {
 	}
 
 	public JsonObject get(final String route,
-						  final @Nullable Object... parameters) throws NamelessException {
+						  final Object... parameters) throws NamelessException {
 		final StringBuilder urlBuilder = new StringBuilder(route);
 
 		if (parameters.length > 0) {
@@ -86,20 +86,20 @@ public class RequestHandler {
 		return makeConnection(urlBuilder.toString(), null);
 	}
 
-	private void debug(final @NonNull String message) {
+	private void debug(final String message) {
 		if (this.debugLogger != null) {
 			this.debugLogger.log(message);
 		}
 	}
 
-	private void debug(final @NonNull Supplier<String> messageSupplier) {
+	private void debug(final Supplier<String> messageSupplier) {
 		if (this.debugLogger != null) {
 			this.debugLogger.log(messageSupplier.get());
 		}
 	}
 
-	private @NonNull JsonObject makeConnection(final @NonNull String route,
-											   final @Nullable JsonObject postBody) throws NamelessException {
+	private JsonObject makeConnection(final String route,
+											   final JsonObject postBody) throws NamelessException {
 		Preconditions.checkArgument(!route.startsWith("/"), "Route must not start with a slash");
 		final URI uri = URI.create(this.apiUrl + route);
 		if (uri.getHost() == null) {
@@ -145,7 +145,7 @@ public class RequestHandler {
 			statusCode = httpResponse.statusCode();
 			responseBody = getBodyAsString(httpResponse);
 		} catch (final IOException e) {
-			final @Nullable String exceptionMessage = e.getMessage();
+			final String exceptionMessage = e.getMessage();
 			final StringBuilder message = new StringBuilder();
 			message.append("Network connection error (not a Nameless issue). ");
 			message.append(e.getClass().getSimpleName());
@@ -252,7 +252,7 @@ public class RequestHandler {
 		}
 	}
 
-	private static @NonNull String regularAsciiOnly(@NonNull String message) {
+	private static String regularAsciiOnly(String message) {
 		char[] chars = message.toCharArray();
 		for (int i = 0; i < chars.length; i++) {
 			char c = chars[i];

@@ -22,18 +22,18 @@ import java.util.*;
 
 public final class NamelessUser implements LanguageEntity {
 
-	private final @NonNull NamelessAPI api;
-	private final @NonNull RequestHandler requests;
+	private final NamelessAPI api;
+	private final RequestHandler requests;
 
 	private int id; // -1 if not known
 	private String userTransformer;
 
 	// Do not use directly, instead use userInfo() and integrations()
-	private @Nullable JsonObject _cachedUserInfo;
-	private @Nullable Map<String, DetailedIntegrationData> _cachedIntegrationData;
+	private JsonObject _cachedUserInfo;
+	private Map<String, DetailedIntegrationData> _cachedIntegrationData;
 
 
-	NamelessUser(final @NonNull NamelessAPI api, final @Positive int id) {
+	NamelessUser(final NamelessAPI api, final int id) {
 		this.api = api;
 		this.requests = api.requests();
 
@@ -41,7 +41,7 @@ public final class NamelessUser implements LanguageEntity {
 		this.userTransformer = "id:" + id;
 	}
 
-	NamelessUser(final @NonNull NamelessAPI api, final @NonNull String userTransformer) {
+	NamelessUser(final NamelessAPI api, final String userTransformer) {
 		this.api = api;
 		this.requests = api.requests();
 
@@ -54,7 +54,7 @@ public final class NamelessUser implements LanguageEntity {
 		this._cachedUserInfo = userInfo;
 	}
 
-	@NonNull JsonObject userInfo() throws NamelessException {
+	JsonObject userInfo() throws NamelessException {
 		if (this._cachedUserInfo != null) {
 			return this._cachedUserInfo;
 		}
@@ -77,7 +77,7 @@ public final class NamelessUser implements LanguageEntity {
 		return response;
 	}
 
-	public @NonNull NamelessAPI api() {
+	public NamelessAPI api() {
 		return this.api;
 	}
 
@@ -107,28 +107,28 @@ public final class NamelessUser implements LanguageEntity {
 		return this.id;
 	}
 
-	public @NonNull String username() throws NamelessException {
+	public String username() throws NamelessException {
 		return this.userInfo().get("username").getAsString();
 	}
 
-	public void updateUsername(final @NonNull String username) throws NamelessException {
+	public void updateUsername(final String username) throws NamelessException {
 		JsonObject post = new JsonObject();
 		post.addProperty("username", username);
 		this.requests.post("users/" + this.userTransformer + "/update-username", post);
 	}
 
-	public @NonNull String displayName() throws NamelessException {
+	public String displayName() throws NamelessException {
 		return this.userInfo().get("displayname").getAsString();
 	}
 
 	/**
 	 * @return The date the user registered on the website.
 	 */
-	public @NonNull Date registeredDate() throws NamelessException {
+	public Date registeredDate() throws NamelessException {
 		return new Date(this.userInfo().get("registered_timestamp").getAsLong() * 1000);
 	}
 
-	public @NonNull Date lastOnline() throws NamelessException {
+	public Date lastOnline() throws NamelessException {
 		return new Date(this.userInfo().get("last_online_timestamp").getAsLong() * 1000);
 	}
 
@@ -144,11 +144,11 @@ public final class NamelessUser implements LanguageEntity {
 	}
 
 	@Override
-	public @NonNull String rawLocale() throws NamelessException {
+	public String rawLocale() throws NamelessException {
 		return this.userInfo().get("locale").getAsString();
 	}
 
-	public @NonNull VerificationInfo verificationInfo() throws NamelessException {
+	public VerificationInfo verificationInfo() throws NamelessException {
 		final boolean verified = isVerified();
 		final JsonObject verification = this.userInfo().getAsJsonObject("verification");
 		return new VerificationInfo(verified, verification);
@@ -176,7 +176,7 @@ public final class NamelessUser implements LanguageEntity {
 	/**
 	 * @return List of the user's groups, sorted from low order to high order.
 	 */
-	public @NonNull List<@NonNull Group> groups() throws NamelessException {
+	public List<Group> groups() throws NamelessException {
 		if (!this.userInfo().has("groups")) {
 			throw new IllegalStateException("Groups array missing: https://github.com/NamelessMC/Nameless/issues/3052");
 		}
@@ -190,7 +190,7 @@ public final class NamelessUser implements LanguageEntity {
 	 *
 	 * @return Player's group with the lowest order
 	 */
-	public @Nullable Group primaryGroup() throws NamelessException {
+	public Group primaryGroup() throws NamelessException {
 		if (!this.userInfo().has("groups")) {
 			throw new IllegalStateException("Groups array missing: https://github.com/NamelessMC/Nameless/issues/3052");
 		}
@@ -203,21 +203,21 @@ public final class NamelessUser implements LanguageEntity {
 		}
 	}
 
-	public void addGroups(final @NonNull Group@NonNull ... groups) throws NamelessException {
+	public void addGroups(final Group... groups) throws NamelessException {
 		final JsonObject post = new JsonObject();
 		post.add("groups", groupsToJsonArray(groups));
 		this.requests.post("users/" + this.userTransformer + "/groups/add", post);
 		invalidateCache(); // Groups modified, invalidate cache
 	}
 
-	public void removeGroups(final @NonNull Group@NonNull... groups) throws NamelessException {
+	public void removeGroups(final Group... groups) throws NamelessException {
 		final JsonObject post = new JsonObject();
 		post.add("groups", groupsToJsonArray(groups));
 		this.requests.post("users/" + this.userTransformer + "/groups/remove", post);
 		invalidateCache(); // Groups modified, invalidate cache
 	}
 
-	private JsonArray groupsToJsonArray(final @NonNull Group@NonNull [] groups) {
+	private JsonArray groupsToJsonArray(final Group[] groups) {
 		final JsonArray array = new JsonArray();
 		for (final Group group : groups) {
 			array.add(group.getId());
@@ -242,7 +242,7 @@ public final class NamelessUser implements LanguageEntity {
 	 * @throws IllegalArgumentException Report reason is too long (>255 characters)
 	 * @throws IllegalArgumentException Report reason is too long (>255 characters)
 	 */
-	public void createReport(final @NonNull NamelessUser user, final @NonNull String reason) throws NamelessException {
+	public void createReport(final NamelessUser user, final String reason) throws NamelessException {
 		Objects.requireNonNull(user, "User to report is null");
 		Objects.requireNonNull(reason, "Report reason is null");
 		Preconditions.checkArgument(reason.length() < 255,
@@ -269,9 +269,9 @@ public final class NamelessUser implements LanguageEntity {
 	 * @param reason Report reason
 	 * @throws IllegalArgumentException Report reason is too long (>255 characters)
 	 */
-	public void createReport(final @NonNull UUID reportedUuid,
-							 final @NonNull String reportedName,
-							 final @NonNull String reason) throws NamelessException {
+	public void createReport(final UUID reportedUuid,
+							 final String reportedName,
+							 final String reason) throws NamelessException {
 		Objects.requireNonNull(reportedUuid, "Reported uuid is null");
 		Objects.requireNonNull(reportedName, "Reported name is null");
 		Objects.requireNonNull(reason, "Report reason is null");
@@ -297,7 +297,7 @@ public final class NamelessUser implements LanguageEntity {
 	 * Get announcements visible to this user
 	 * @return List of announcements visible to this user
 	 */
-	public @NonNull List<@NonNull Announcement> announcements() throws NamelessException {
+	public List<Announcement> announcements() throws NamelessException {
 		final JsonObject response = this.requests.get("users/" + this.userTransformer + "/announcements");
 		return NamelessAPI.announcements(response);
 	}
@@ -364,27 +364,27 @@ public final class NamelessUser implements LanguageEntity {
 		return integrationDataMap;
 	}
 
-	public @Nullable UUID minecraftUuid() throws NamelessException {
+	public UUID minecraftUuid() throws NamelessException {
 		final IntegrationData integration = this.integrations().get(StandardIntegrationTypes.MINECRAFT);
 		return integration == null ? null : ((IMinecraftIntegrationData) integration).uuid();
 	}
 
-	public @Nullable String minecraftUsername() throws NamelessException {
+	public String minecraftUsername() throws NamelessException {
 		final IntegrationData integration = this.integrations().get(StandardIntegrationTypes.MINECRAFT);
 		return integration == null ? null : integration.username();
 	}
 
-	public @Nullable Long discordId() throws NamelessException {
+	public Long discordId() throws NamelessException {
 		final IntegrationData integration = this.integrations().get(StandardIntegrationTypes.DISCORD);
 		return integration == null ? null : ((IDiscordIntegrationData) integration).idLong();
 	}
 
-	public @Nullable String discordUsername() throws NamelessException {
+	public String discordUsername() throws NamelessException {
 		final IntegrationData integration = this.integrations().get(StandardIntegrationTypes.DISCORD);
 		return integration == null ? null : integration.username();
 	}
 
-	public void verify(final @NonNull String verificationCode) throws NamelessException {
+	public void verify(final String verificationCode) throws NamelessException {
 		final JsonObject body = new JsonObject();
 		body.addProperty("code", verificationCode);
 		this.requests.post("users/" + this.userTransformer + "/verify", body);

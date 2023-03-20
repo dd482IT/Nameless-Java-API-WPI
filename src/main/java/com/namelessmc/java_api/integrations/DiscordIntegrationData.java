@@ -7,7 +7,7 @@ public class DiscordIntegrationData extends IntegrationData {
 	private final long id;
 
 	public DiscordIntegrationData(final long id,
-								  final @NonNull String username) {
+								  final String username) {
 		super(StandardIntegrationTypes.DISCORD, String.valueOf(id), username);
 		this.id = id;
 	}

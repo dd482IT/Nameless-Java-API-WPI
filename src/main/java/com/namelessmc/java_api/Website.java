@@ -14,7 +14,7 @@ import java.util.stream.StreamSupport;
 public class Website implements LanguageEntity {
 
 	private final String version;
-	private final @Nullable Update update;
+	private final Update update;
 	private final Set<NamelessModule> modules;
 	private final String rawLanguage;
 
@@ -65,7 +65,7 @@ public class Website implements LanguageEntity {
 	/**
 	 * @return Information about an update, or empty if no update is available.
 	 */
-	public @Nullable Update update() {
+	public Update update() {
 		return this.update;
 	}
 

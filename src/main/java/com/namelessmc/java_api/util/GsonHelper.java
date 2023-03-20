@@ -42,7 +42,7 @@ public class GsonHelper {
 		return Collections.unmodifiableList(list);
 	}
 
-	public static @Nullable String getNullableString(JsonObject object, String key) {
+	public static String getNullableString(JsonObject object, String key) {
 		if (object.has(key)) {
 			JsonElement e = object.get(key);
 			if (!e.isJsonNull()) {

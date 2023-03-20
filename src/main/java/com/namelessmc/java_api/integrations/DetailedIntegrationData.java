@@ -8,14 +8,14 @@ import java.util.Date;
 public class DetailedIntegrationData extends IntegrationData {
 
 	private final boolean verified;
-	private final @NonNull Date linkedDate;
+	private final Date linkedDate;
 	private final boolean shownPublicly;
 
-	public DetailedIntegrationData(final @NonNull String integrationType,
-							final @NonNull String identifier,
-							final @NonNull String username,
+	public DetailedIntegrationData(final String integrationType,
+							final String identifier,
+							final String username,
 							final boolean verified,
-							final @NonNull Date linkedDate,
+							final Date linkedDate,
 							final boolean shownPublicly) {
 		super(integrationType, identifier, username);
 		this.verified = verified;
@@ -23,7 +23,7 @@ public class DetailedIntegrationData extends IntegrationData {
 		this.shownPublicly = shownPublicly;
 	}
 
-	public DetailedIntegrationData(final @NonNull JsonObject json) {
+	public DetailedIntegrationData(final JsonObject json) {
 		this(
 				json.get("integration").getAsString(),
 				json.get("identifier").getAsString(),
@@ -38,7 +38,7 @@ public class DetailedIntegrationData extends IntegrationData {
 		return this.verified;
 	}
 
-	public final @NonNull Date linkedDate() {
+	public final Date linkedDate() {
 		return this.linkedDate;
 	}
 

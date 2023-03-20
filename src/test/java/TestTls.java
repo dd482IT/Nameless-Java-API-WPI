@@ -9,7 +9,6 @@ import java.net.URL;
 
 public class TestTls {
 
-    @Test
     void checkTlsVersion() throws MalformedURLException, NamelessException {
         NamelessAPI api = NamelessAPI.builder(new URL("https://check-tls.akamai.io/"), "").build();
         JsonObject response = api.requests().get("v1/tlsinfo.json");

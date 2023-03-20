@@ -46,7 +46,7 @@ public class PendingCommandsResponse {
 		}
 
 		@Override
-		public @NonNull String username() {
+		public String username() {
 			String username = super.username();
 			if (username == null) {
 				throw new IllegalStateException("Pending commands response cannot contain null username");

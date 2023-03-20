@@ -26,15 +26,15 @@ public enum NamelessVersion {
 			V2_1
 	);
 
-	private final @Nullable String exactMatchName; // Only for pre-releases
-	private final @NonNull String friendlyName;
+	private final String exactMatchName; // Only for pre-releases
+	private final String friendlyName;
 	private final int major;
 	private final int minor;
 	private final boolean preRelease;
 
 	@SuppressWarnings("SameParameterValue")
-	NamelessVersion(final @Nullable String exactMatchName,
-					final @NonNull String friendlyName,
+	NamelessVersion(final String exactMatchName,
+					final String friendlyName,
 					final int major,
 					final int minor,
 					final boolean preRelease) {
@@ -45,7 +45,7 @@ public enum NamelessVersion {
 		this.preRelease = preRelease;
 	}
 
-	public @NonNull String friendlyName() {
+	public String friendlyName() {
 		return this.friendlyName;
 	}
 
@@ -81,7 +81,7 @@ public enum NamelessVersion {
 		}
 	}
 
-	public static NamelessVersion parse(final @NonNull String versionName) throws UnknownNamelessVersionException {
+	public static NamelessVersion parse(final String versionName) throws UnknownNamelessVersionException {
 		Objects.requireNonNull(versionName, "Version name is null");
 		if (versionName.contains("-pr")) {
 			// Pre-release version should match exactly
