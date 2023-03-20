@@ -35,13 +35,10 @@
 						</path>
 					</annotationProcessorPaths>
 					<annotationProcessors>
-						<!--
 						<annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
 						<annotationProcessor>org.checkerframework.checker.optional.OptionalChecker</annotationProcessor>
 						<annotationProcessor>org.checkerframework.checker.regex.RegexChecker</annotationProcessor>
 						<annotationProcessor>org.checkerframework.checker.formatter.FormatterChecker</annotationProcessor>
-						-->
-						<annotationProcessor>org.checkerframework.common.util.count.AnnotationStatistics</annotationProcessor>
 					</annotationProcessors>
 					<compilerArgs>
 					 	<arg>-Awarns</arg>
