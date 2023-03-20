@@ -38,7 +38,7 @@ WPIOUTDIR=./build/whole-program-inference
 DEBUG=1
 
 # End of variables. You probably don't need to make changes below this line.
-
+.
 rm -rf ${WPITEMPDIR}
 mkdir -p ${WPITEMPDIR}
 
