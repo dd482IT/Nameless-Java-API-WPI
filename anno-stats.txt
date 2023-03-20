@@ -1,0 +1,562 @@
+@Pure:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000883 seconds spent searching
+0.005107 seconds
+@org.checkerframework.dataflow.qual.Pure:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.009148 seconds spent searching
+0.005755 seconds
+@SideEffectFree:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000443 seconds spent searching
+0.003320 seconds
+@org.checkerframework.dataflow.qual.SideEffectFree:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.007070 seconds spent searching
+0.004038 seconds
+@Deterministic:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000352 seconds spent searching
+0.004098 seconds
+@org.checkerframework.dataflow.qual.Deterministic:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.005602 seconds spent searching
+0.003610 seconds
+@RequiresQualifier:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000356 seconds spent searching
+0.004069 seconds
+@org.checkerframework.framework.qual.RequiresQualifier:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000305 seconds spent searching
+0.003038 seconds
+@EnsuresQualifer:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000265 seconds spent searching
+0.002950 seconds
+@org.checkerframework.framework.qual.EnsuresQualifer:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004791 seconds spent searching
+0.003402 seconds
+@RequiresQualifierIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000271 seconds spent searching
+0.002843 seconds
+@org.checkerframework.framework.qual.RequiresQualifierIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000381 seconds spent searching
+0.002731 seconds
+@EnsuresQualiferIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000368 seconds spent searching
+0.003910 seconds
+org.checkerframework.framework.qual.EnsuresQualiferIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000285 seconds spent searching
+0.002806 seconds
+@Nullable:
+src/main/java/com/namelessmc/java_api/CustomProfileFieldValue.java:3
+src/main/java/com/namelessmc/java_api/exception/ApiError.java:1
+src/main/java/com/namelessmc/java_api/Website.java:2
+src/main/java/com/namelessmc/java_api/NamelessUser.java:7
+src/main/java/com/namelessmc/java_api/modules/store/StorePayment.java:2
+src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java:1
+src/main/java/com/namelessmc/java_api/modules/store/StoreCustomer.java:7
+src/main/java/com/namelessmc/java_api/modules/store/StoreProductField.java:2
+src/main/java/com/namelessmc/java_api/NamelessApiBuilder.java:8
+src/main/java/com/namelessmc/java_api/NamelessVersion.java:2
+src/main/java/com/namelessmc/java_api/CustomProfileField.java:1
+src/main/java/com/namelessmc/java_api/util/GsonHelper.java:1
+src/main/java/com/namelessmc/java_api/RequestHandler.java:5
+src/main/java/com/namelessmc/java_api/exception/ApiException.java:1
+src/main/java/com/namelessmc/java_api/NamelessAPI.java:10
+src/main/java/com/namelessmc/java_api/modules/NamelessModule.java:4
+src/main/java/com/namelessmc/java_api/Group.java:1
+
+58 matches
+58 matched lines
+17 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004581 seconds spent searching
+0.003335 seconds
+@org.checkerframework.checker.nullness.qual.Nullable:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.005563 seconds spent searching
+0.004359 seconds
+@NonNull:
+src/main/java/com/namelessmc/java_api/integrations/DiscordIntegrationData.java:1
+src/main/java/com/namelessmc/java_api/CustomProfileFieldValue.java:3
+src/main/java/com/namelessmc/java_api/integrations/DetailedDiscordIntegrationData.java:1
+src/main/java/com/namelessmc/java_api/integrations/IMinecraftIntegrationData.java:1
+src/main/java/com/namelessmc/java_api/exception/NamelessException.java:4
+src/main/java/com/namelessmc/java_api/integrations/MinecraftIntegrationData.java:4
+src/main/java/com/namelessmc/java_api/LanguageEntity.java:1
+src/main/java/com/namelessmc/java_api/modules/websend/WebsendAPI.java:1
+src/main/java/com/namelessmc/java_api/modules/discord/DiscordAPI.java:7
+src/main/java/com/namelessmc/java_api/NamelessApiBuilder.java:4
+src/main/java/com/namelessmc/java_api/NamelessVersion.java:4
+src/main/java/com/namelessmc/java_api/NamelessUser.java:27
+src/main/java/com/namelessmc/java_api/modules/websend/WebsendCommand.java:3
+src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java:10
+src/main/java/com/namelessmc/java_api/CustomProfileField.java:9
+src/main/java/com/namelessmc/java_api/integrations/DetailedIntegrationData.java:7
+src/main/java/com/namelessmc/java_api/integrations/DetailedMinecraftIntegrationData.java:3
+src/main/java/com/namelessmc/java_api/modules/store/PendingCommandsResponse.java:1
+src/main/java/com/namelessmc/java_api/RequestHandler.java:12
+src/main/java/com/namelessmc/java_api/NamelessAPI.java:46
+src/main/java/com/namelessmc/java_api/integrations/IntegrationData.java:9
+src/main/java/com/namelessmc/java_api/UserFilter.java:3
+src/main/java/com/namelessmc/java_api/Group.java:4
+src/main/java/com/namelessmc/java_api/VerificationInfo.java:3
+src/main/java/com/namelessmc/java_api/Announcement.java:11
+
+179 matches
+156 matched lines
+25 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004726 seconds spent searching
+0.005651 seconds
+@org.checkerframework.checker.nullness.qual.NonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.006392 seconds spent searching
+0.003943 seconds
+@PolyNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000284 seconds spent searching
+0.003794 seconds
+@org.checkerframework.checker.nullness.qual.PolyNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004594 seconds spent searching
+0.003231 seconds
+@MonotonicNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000256 seconds spent searching
+0.002652 seconds
+@org.checkerframework.checker.nullness.qual.MonotonicNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000307 seconds spent searching
+0.002703 seconds
+@RequiresNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000231 seconds spent searching
+0.002701 seconds
+@org.checkerframework.checker.nullness.qual.RequiresNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004304 seconds spent searching
+0.004247 seconds
+@EnsuresNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000300 seconds spent searching
+0.002607 seconds
+@org.checkerframework.checker.nullness.qual.EnsuresNonNull:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004471 seconds spent searching
+0.003202 seconds
+@EnsuresNonNullIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000239 seconds spent searching
+0.002735 seconds
+@org.checkerframework.checker.nullness.qual.EnsuresNonNullIf:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000253 seconds spent searching
+0.002674 seconds
+@Format:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000256 seconds spent searching
+0.002588 seconds
+@org.checkerframework.checker.formatter.qual.Format:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004285 seconds spent searching
+0.003161 seconds
+@InvalidFormat:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000290 seconds spent searching
+0.002712 seconds
+@org.checkerframework.checker.formatter.qual.InvalidFormat:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004533 seconds spent searching
+0.003190 seconds
+@FormatBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000270 seconds spent searching
+0.003833 seconds
+@org.checkerframework.checker.formatter.qual.FormatBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004565 seconds spent searching
+0.003124 seconds
+@UnknownFormat:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000355 seconds spent searching
+0.002779 seconds
+@org.checkerframework.checker.formatter.qual.UnknownFormat:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004308 seconds spent searching
+0.003195 seconds
+@MaybePresent:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000287 seconds spent searching
+0.003761 seconds
+@org.checkerframework.checker.optional.qual.MaybePresent:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004510 seconds spent searching
+0.003169 seconds
+@Present:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000275 seconds spent searching
+0.002603 seconds
+@org.checkerframework.checker.optional.qual.Present:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004890 seconds spent searching
+0.003127 seconds
+@OptionalBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000311 seconds spent searching
+0.002722 seconds
+@org.checkerframework.checker.optional.qual.OptionalBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004569 seconds spent searching
+0.003288 seconds
+@PolyPresent:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000361 seconds spent searching
+0.003813 seconds
+@org.checkerframework.checker.optional.qual.PolyPresent:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.004561 seconds spent searching
+0.003090 seconds
+@Regex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000300 seconds spent searching
+0.003784 seconds
+org.checkerframework.checker.regex.qual.Regex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.007246 seconds spent searching
+0.004529 seconds
+@PolyRegex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000215 seconds spent searching
+0.002611 seconds
+org.checkerframework.checker.regex.qual.PolyRegex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.007597 seconds spent searching
+0.003644 seconds
+@UnknownRegex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000318 seconds spent searching
+0.002760 seconds
+org.checkerframework.checker.regex.qual.UnknownRegex:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.007068 seconds spent searching
+0.003506 seconds
+@RegexBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.000244 seconds spent searching
+0.002624 seconds
+org.checkerframework.checker.regex.qual.RegexBottom:
+
+0 matches
+0 matched lines
+0 files contained matches
+60 files searched
+0 bytes printed
+115257 bytes searched
+0.008666 seconds spent searching
+0.003891 seconds
