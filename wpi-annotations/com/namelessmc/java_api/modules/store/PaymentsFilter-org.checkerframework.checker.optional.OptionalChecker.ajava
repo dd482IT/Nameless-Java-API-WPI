@@ -1,0 +1,58 @@
+package com.namelessmc.java_api.modules.store;
+
+import java.util.Objects;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class PaymentsFilter {
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String name;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String value;
+
+    private PaymentsFilter(@org.checkerframework.checker.optional.qual.MaybePresent String name, @org.checkerframework.checker.optional.qual.MaybePresent String value) {
+        this.name = Objects.requireNonNull(name);
+        this.value = Objects.requireNonNull(value);
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String name(@org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter this) {
+        return this.name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String value(@org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter this) {
+        return this.value;
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter order(int orderId) {
+        return new PaymentsFilter("order", String.valueOf(orderId));
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter gateway(int gatewayId) {
+        return new PaymentsFilter("gateway", String.valueOf(gatewayId));
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter status(PaymentStatus status) {
+        return new PaymentsFilter("status", String.valueOf(status.ordinal()));
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter payingCustomer( @org.checkerframework.checker.optional.qual.MaybePresent int customerId) {
+        return new PaymentsFilter("customer", String.valueOf(customerId));
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter payingCustomer(StoreCustomer customer) {
+        return payingCustomer(customer.id());
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter receivingCustomer(int customerId) {
+        return new PaymentsFilter("recipient", String.valueOf(customerId));
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter receivingCustomer(StoreCustomer customer) {
+        return payingCustomer(customer.id());
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent PaymentsFilter limit(int limit) {
+        return new PaymentsFilter("limit", String.valueOf(limit));
+    }
+}

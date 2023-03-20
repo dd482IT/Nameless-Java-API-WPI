@@ -1,0 +1,18 @@
+package com.namelessmc.java_api.modules.store;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public enum PaymentStatus {
+
+    // 0
+    PAYMENT_PENDING,
+    // 1
+    PAYMENT_COMPLETE,
+    // 2
+    PAYMENT_REFUNDED,
+    // 3
+    PAYMENT_CHARGED_BACK,
+    // 4
+    PAYMENT_DENIED;
+
+    static final @org.checkerframework.checker.optional.qual.MaybePresent PaymentStatus @org.checkerframework.checker.optional.qual.MaybePresent [] BY_ID = PaymentStatus.values();
+}

@@ -1,0 +1,8 @@
+package com.namelessmc.java_api.integrations;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.regex.RegexChecker")
+public interface IDiscordIntegrationData {
+
+    @org.checkerframework.dataflow.qual.Pure
+      long idLong( IDiscordIntegrationData this);
+}

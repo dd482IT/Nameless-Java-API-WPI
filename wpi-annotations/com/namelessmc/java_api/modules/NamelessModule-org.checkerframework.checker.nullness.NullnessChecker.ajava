@@ -1,0 +1,92 @@
+package com.namelessmc.java_api.modules;
+
+import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class NamelessModule {
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule CORE = new NamelessModule("Core", true, null);
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule FORUM = new NamelessModule("Forum", true, null);
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule DISCORD_INTEGRATION = new NamelessModule("Discord Integration", true, null);
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule COOKIE_CONSENT = new NamelessModule("Cookie Consent", true, null);
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule STORE = new NamelessModule("Store", false, "https://namelessmc.com/resources/resource/139");
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule WEBSEND = new NamelessModule("Websend", false, "https://github.com/supercrafter100/Nameless-Websend/archive/refs/heads/master.zip");
+
+    public static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule SUGGESTIONS = new NamelessModule("Suggestions", false, "https://namelessmc.com/resources/resource/129");
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name;
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean included;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull String downloadLink;
+
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    private NamelessModule(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name,  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean included, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String downloadLink) {
+        this.name = name;
+        this.included = included;
+        this.downloadLink = downloadLink;
+    }
+
+    @org.checkerframework.framework.qual.RequiresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name() {
+        return this.name;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean isIncluded() {
+        return this.included;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String downloadLink() {
+        return downloadLink;
+    }
+
+    private static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull List<NamelessModule> MODULES = List.of(CORE, FORUM, DISCORD_INTEGRATION, COOKIE_CONSENT, STORE, WEBSEND, SUGGESTIONS);
+
+    private static final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Map<String, NamelessModule> BY_NAME = new HashMap<>();
+
+    static {
+        for (NamelessModule module : MODULES) {
+            BY_NAME.put(module.name(), module);
+        }
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule custom(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name) {
+        return new NamelessModule(Objects.requireNonNull(name), false, null);
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule byName(String name) {
+        if (BY_NAME.containsKey(name)) {
+            return BY_NAME.get(name);
+        } else {
+            return custom(name);
+        }
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int hashCode(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule this) {
+        return name.hashCode();
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.downloadLink" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean equals(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessModule this, final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable Object obj) {
+        return obj instanceof NamelessModule && ((NamelessModule) obj).name().equals(this.name);
+    }
+}

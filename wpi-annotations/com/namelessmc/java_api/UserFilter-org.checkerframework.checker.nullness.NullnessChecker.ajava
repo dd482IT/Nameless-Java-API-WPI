@@ -1,0 +1,26 @@
+package com.namelessmc.java_api;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class UserFilter<FilterValueType> {
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UserFilter<Boolean> BANNED = new UserFilter<>("banned");
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UserFilter<Boolean> VERIFIED = new UserFilter<>("verified");
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UserFilter<Integer> GROUP_ID = new UserFilter<>("group_id");
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UserFilter<String> INTEGRATION = new UserFilter<>("integration");
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String filterName;
+
+    public UserFilter(final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String filterName) {
+        this.filterName = filterName;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name() {
+        return this.filterName;
+    }
+}

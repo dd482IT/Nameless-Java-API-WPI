@@ -1,0 +1,54 @@
+package com.namelessmc.java_api;
+
+import com.google.gson.JsonObject;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class Notification {
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String message;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String url;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Type type;
+
+    public Notification(JsonObject json) {
+        this.message = json.get("message").getAsString();
+        this.url = json.get("url").getAsString();
+        this.type = Type.fromString(json.get("type").getAsString());
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String message() {
+        return this.message;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String url() {
+        return this.url;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Type type() {
+        return this.type;
+    }
+
+    public enum Type {
+
+        TAG,
+        MESSAGE,
+        LIKE,
+        PROFILE_COMMENT,
+        COMMENT_REPLY,
+        THREAD_REPLY,
+        FOLLOW,
+        UNKNOWN;
+
+        public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Type fromString(final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String string) {
+            try {
+                return Type.valueOf(string.replace('-', '_').toUpperCase());
+            } catch (final IllegalArgumentException e) {
+                return Type.UNKNOWN;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+package com.namelessmc.java_api.modules.suggestions;
+
+import com.google.gson.JsonObject;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class SuggestionCategory {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int id;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String name;
+
+    SuggestionCategory(final @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.name = json.get("name").getAsString();
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int id(@org.checkerframework.checker.optional.qual.MaybePresent SuggestionCategory this) {
+        return this.id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String name() {
+        return this.name;
+    }
+}

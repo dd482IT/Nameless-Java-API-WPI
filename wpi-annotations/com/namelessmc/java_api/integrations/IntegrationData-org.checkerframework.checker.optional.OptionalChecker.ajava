@@ -1,0 +1,35 @@
+package com.namelessmc.java_api.integrations;
+
+import org.checkerframework.checker.initialization.qual.UnknownInitialization;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class IntegrationData {
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String integrationType;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String identifier;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String username;
+
+    public IntegrationData(final @org.checkerframework.checker.optional.qual.MaybePresent String integrationType, final @org.checkerframework.checker.optional.qual.MaybePresent String identifier, final @org.checkerframework.checker.optional.qual.MaybePresent String username) {
+        this.integrationType = integrationType;
+        this.identifier = identifier;
+        this.username = username;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final @org.checkerframework.checker.optional.qual.MaybePresent String type(@org.checkerframework.checker.optional.qual.MaybePresent IntegrationData this) {
+        return this.integrationType;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final @org.checkerframework.checker.optional.qual.MaybePresent String identifier(@org.checkerframework.checker.optional.qual.MaybePresent IntegrationData this) {
+        return this.identifier;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final @org.checkerframework.checker.optional.qual.MaybePresent String username(@org.checkerframework.checker.optional.qual.MaybePresent IntegrationData this) {
+        return this.username;
+    }
+}

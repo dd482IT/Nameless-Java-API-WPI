@@ -1,0 +1,41 @@
+package com.namelessmc.java_api.integrations;
+
+import com.google.gson.JsonObject;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import java.util.Date;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class DetailedIntegrationData extends IntegrationData {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean verified;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Date linkedDate;
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean shownPublicly;
+
+    public DetailedIntegrationData(final @org.checkerframework.checker.optional.qual.MaybePresent String integrationType, final @org.checkerframework.checker.optional.qual.MaybePresent String identifier, final @org.checkerframework.checker.optional.qual.MaybePresent String username, final  @org.checkerframework.checker.optional.qual.MaybePresent boolean verified, final @org.checkerframework.checker.optional.qual.MaybePresent Date linkedDate, final  @org.checkerframework.checker.optional.qual.MaybePresent boolean shownPublicly) {
+        super(integrationType, identifier, username);
+        this.verified = verified;
+        this.linkedDate = linkedDate;
+        this.shownPublicly = shownPublicly;
+    }
+
+    public DetailedIntegrationData(final @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        this(json.get("integration").getAsString(), json.get("identifier").getAsString(), json.get("username").getAsString(), json.get("verified").getAsBoolean(), new Date(json.get("linked_date").getAsLong() * 1000), json.get("show_publicly").getAsBoolean());
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final  @org.checkerframework.checker.optional.qual.MaybePresent boolean isVerified() {
+        return this.verified;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final @org.checkerframework.checker.optional.qual.MaybePresent Date linkedDate() {
+        return this.linkedDate;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final  @org.checkerframework.checker.optional.qual.MaybePresent boolean isShownPublicly() {
+        return this.shownPublicly;
+    }
+}

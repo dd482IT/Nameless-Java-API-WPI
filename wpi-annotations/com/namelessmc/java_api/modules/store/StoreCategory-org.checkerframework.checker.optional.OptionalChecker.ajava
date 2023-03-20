@@ -1,0 +1,42 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonObject;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class StoreCategory {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int id;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String name;
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean hidden;
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean disabled;
+
+    StoreCategory(@org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.name = json.get("name").getAsString();
+        this.hidden = json.get("hidden").getAsBoolean();
+        this.disabled = json.get("disabled").getAsBoolean();
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int id() {
+        return this.id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String name() {
+        return this.name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent boolean isHidden() {
+        return this.hidden;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent boolean isDisabled() {
+        return this.disabled;
+    }
+}

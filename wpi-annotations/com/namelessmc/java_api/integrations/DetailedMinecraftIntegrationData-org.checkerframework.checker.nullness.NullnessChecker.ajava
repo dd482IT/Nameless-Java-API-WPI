@@ -1,0 +1,22 @@
+package com.namelessmc.java_api.integrations;
+
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessAPI;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import java.util.UUID;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class DetailedMinecraftIntegrationData extends DetailedIntegrationData implements IMinecraftIntegrationData {
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UUID uuid;
+
+    public DetailedMinecraftIntegrationData(final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull JsonObject json) {
+        super(json);
+        this.uuid = NamelessAPI.websiteUuidToJavaUuid(this.identifier());
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull UUID uuid(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull DetailedMinecraftIntegrationData this) {
+        return this.uuid;
+    }
+}

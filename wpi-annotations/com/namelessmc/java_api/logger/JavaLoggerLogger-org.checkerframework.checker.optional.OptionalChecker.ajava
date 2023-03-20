@@ -1,0 +1,25 @@
+package com.namelessmc.java_api.logger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class JavaLoggerLogger extends ApiLogger {
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Logger logger;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Level level;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String prefix;
+
+    public JavaLoggerLogger(final Logger logger, final Level level, final String prefix) {
+        this.logger = logger;
+        this.level = level;
+        this.prefix = prefix;
+    }
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public void log(@org.checkerframework.checker.optional.qual.MaybePresent JavaLoggerLogger this, final @org.checkerframework.checker.optional.qual.MaybePresent String string) {
+        this.logger.log(this.level, this.prefix + string);
+    }
+}

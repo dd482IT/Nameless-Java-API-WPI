@@ -1,0 +1,9 @@
+package com.namelessmc.java_api.integrations;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class StandardIntegrationTypes {
+
+    public static final  String MINECRAFT = "Minecraft";
+
+    public static final  String DISCORD = "Discord";
+}

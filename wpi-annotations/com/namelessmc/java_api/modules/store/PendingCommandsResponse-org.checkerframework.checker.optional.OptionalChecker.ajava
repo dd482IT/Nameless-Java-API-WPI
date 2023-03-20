@@ -1,0 +1,102 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessAPI;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import java.util.ArrayList;
+import java.util.List;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class PendingCommandsResponse {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean useUuids;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent List<PendingCommandsCustomer> customers;
+
+    PendingCommandsResponse(@org.checkerframework.checker.optional.qual.MaybePresent NamelessAPI api, @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        this.useUuids = json.get("online_mode").getAsBoolean();
+        JsonArray customers = json.getAsJsonArray("customers");
+        this.customers = new ArrayList<>(customers.size());
+        for (JsonElement element : customers) {
+            this.customers.add(new PendingCommandsCustomer(api, element.getAsJsonObject()));
+        }
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent boolean shouldUseUuids() {
+        return this.useUuids;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent List<PendingCommandsCustomer> customers() {
+        return this.customers;
+    }
+
+    public static class PendingCommandsCustomer extends StoreCustomer {
+
+        private final @org.checkerframework.checker.optional.qual.MaybePresent List<PendingCommand> pendingCommands;
+
+        private PendingCommandsCustomer(@org.checkerframework.checker.optional.qual.MaybePresent NamelessAPI api, @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+            super(api, json);
+            JsonArray commands = json.getAsJsonArray("commands");
+            this.pendingCommands = new ArrayList<>(commands.size());
+            for (JsonElement element : commands) {
+                this.pendingCommands.add(new PendingCommand(element.getAsJsonObject()));
+            }
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public @org.checkerframework.checker.optional.qual.MaybePresent String username(@org.checkerframework.checker.optional.qual.MaybePresent PendingCommandsCustomer this) {
+            String username = super.username();
+            if (username == null) {
+                throw new IllegalStateException("Pending commands response cannot contain null username");
+            }
+            return username;
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public @org.checkerframework.checker.optional.qual.MaybePresent List<PendingCommand> pendingCommands() {
+            return this.pendingCommands;
+        }
+    }
+
+    public static class PendingCommand {
+
+        private final  @org.checkerframework.checker.optional.qual.MaybePresent int id;
+
+        private final @org.checkerframework.checker.optional.qual.MaybePresent String command;
+
+        private final  @org.checkerframework.checker.optional.qual.MaybePresent int orderId;
+
+        private final  @org.checkerframework.checker.optional.qual.MaybePresent boolean requireOnline;
+
+        private PendingCommand(@org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+            this.id = json.get("id").getAsInt();
+            this.command = json.get("command").getAsString();
+            this.orderId = json.get("order_id").getAsInt();
+            this.requireOnline = json.get("require_online").getAsBoolean();
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public  @org.checkerframework.checker.optional.qual.MaybePresent int id(@org.checkerframework.checker.optional.qual.MaybePresent PendingCommand this) {
+            return id;
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public @org.checkerframework.checker.optional.qual.MaybePresent String command() {
+            return command;
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public  @org.checkerframework.checker.optional.qual.MaybePresent int orderId() {
+            return orderId;
+        }
+
+        @org.checkerframework.dataflow.qual.Pure
+        public  @org.checkerframework.checker.optional.qual.MaybePresent boolean isOnlineRequired() {
+            return requireOnline;
+        }
+    }
+}

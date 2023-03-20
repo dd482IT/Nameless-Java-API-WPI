@@ -1,0 +1,42 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonObject;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.regex.RegexChecker")
+public class StoreCategory {
+
+    private final   int id;
+
+    private final  String name;
+
+    private final   boolean hidden;
+
+    private final   boolean disabled;
+
+    StoreCategory( JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.name = json.get("name").getAsString();
+        this.hidden = json.get("hidden").getAsBoolean();
+        this.disabled = json.get("disabled").getAsBoolean();
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   int id() {
+        return this.id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String name() {
+        return this.name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   boolean isHidden() {
+        return this.hidden;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   boolean isDisabled() {
+        return this.disabled;
+    }
+}

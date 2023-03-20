@@ -1,0 +1,8 @@
+package com.namelessmc.java_api.integrations;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public interface IDiscordIntegrationData {
+
+    @org.checkerframework.dataflow.qual.Pure
+     @org.checkerframework.checker.optional.qual.MaybePresent long idLong(@org.checkerframework.checker.optional.qual.MaybePresent IDiscordIntegrationData this);
+}

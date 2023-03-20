@@ -1,0 +1,20 @@
+package com.namelessmc.java_api.integrations;
+
+import com.google.gson.JsonObject;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class DetailedDiscordIntegrationData extends DetailedIntegrationData implements IDiscordIntegrationData {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent long idLong;
+
+    public DetailedDiscordIntegrationData(final @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        super(json);
+        this.idLong = Long.parseLong(this.identifier());
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public final  @org.checkerframework.checker.optional.qual.MaybePresent long idLong(@org.checkerframework.checker.optional.qual.MaybePresent DetailedDiscordIntegrationData this) {
+        return this.idLong;
+    }
+}

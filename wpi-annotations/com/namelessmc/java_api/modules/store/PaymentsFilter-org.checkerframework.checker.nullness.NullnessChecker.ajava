@@ -1,0 +1,58 @@
+package com.namelessmc.java_api.modules.store;
+
+import java.util.Objects;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class PaymentsFilter {
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String value;
+
+    private PaymentsFilter(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String value) {
+        this.name = Objects.requireNonNull(name);
+        this.value = Objects.requireNonNull(value);
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String name() {
+        return this.name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String value() {
+        return this.value;
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter order(int orderId) {
+        return new PaymentsFilter("order", String.valueOf(orderId));
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter gateway(int gatewayId) {
+        return new PaymentsFilter("gateway", String.valueOf(gatewayId));
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter status(PaymentStatus status) {
+        return new PaymentsFilter("status", String.valueOf(status.ordinal()));
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter payingCustomer( @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int customerId) {
+        return new PaymentsFilter("customer", String.valueOf(customerId));
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter payingCustomer(StoreCustomer customer) {
+        return payingCustomer(customer.id());
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter receivingCustomer(int customerId) {
+        return new PaymentsFilter("recipient", String.valueOf(customerId));
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter receivingCustomer(StoreCustomer customer) {
+        return payingCustomer(customer.id());
+    }
+
+    public static @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentsFilter limit(int limit) {
+        return new PaymentsFilter("limit", String.valueOf(limit));
+    }
+}

@@ -1,0 +1,70 @@
+package com.namelessmc.java_api;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.Objects;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class CustomProfileField {
+
+    private final   int id;
+
+    private final  String name;
+
+    private final  CustomProfileFieldType type;
+
+    private final   boolean isPublic;
+
+    private final   boolean isRequired;
+
+    private final  String description;
+
+    CustomProfileField(final   int id, final  String name, final  CustomProfileFieldType type, final   boolean isPublic, final   boolean isRequired, final  String description) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.isPublic = isPublic;
+        this.isRequired = isRequired;
+        this.description = description;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   int id() {
+        return id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String name() {
+        return name;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  CustomProfileFieldType type() {
+        return type;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   boolean isPublic() {
+        return isPublic;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   boolean isRequired() {
+        return isRequired;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String description() {
+        return description;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   boolean equals( CustomProfileField this, final  Object other) {
+        return other instanceof CustomProfileField && ((CustomProfileField) other).id == this.id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   int hashCode( CustomProfileField this) {
+        return Objects.hash(id);
+    }
+}

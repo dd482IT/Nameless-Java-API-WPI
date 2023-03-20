@@ -1,0 +1,27 @@
+package com.namelessmc.java_api.modules.websend;
+
+import org.checkerframework.checker.index.qual.Positive;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class WebsendCommand {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int id;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String commandLine;
+
+    public WebsendCommand(final  @org.checkerframework.checker.optional.qual.MaybePresent int id, final @org.checkerframework.checker.optional.qual.MaybePresent String commandLine) {
+        this.id = id;
+        this.commandLine = commandLine;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int id() {
+        return id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String command() {
+        return this.commandLine;
+    }
+}

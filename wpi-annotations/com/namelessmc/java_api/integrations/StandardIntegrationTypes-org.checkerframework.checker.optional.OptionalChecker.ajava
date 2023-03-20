@@ -1,0 +1,9 @@
+package com.namelessmc.java_api.integrations;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class StandardIntegrationTypes {
+
+    public static final @org.checkerframework.checker.optional.qual.MaybePresent String MINECRAFT = "Minecraft";
+
+    public static final @org.checkerframework.checker.optional.qual.MaybePresent String DISCORD = "Discord";
+}

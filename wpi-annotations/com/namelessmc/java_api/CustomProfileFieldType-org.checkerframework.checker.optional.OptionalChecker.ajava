@@ -1,0 +1,14 @@
+package com.namelessmc.java_api;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public enum CustomProfileFieldType {
+
+    TEXT, TEXT_AREA, DATE;
+
+    private static final @org.checkerframework.checker.optional.qual.MaybePresent CustomProfileFieldType @org.checkerframework.checker.optional.qual.MaybePresent [] VALUES = CustomProfileFieldType.values();
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static @org.checkerframework.checker.optional.qual.MaybePresent CustomProfileFieldType fromNamelessTypeInt( @org.checkerframework.checker.optional.qual.MaybePresent int namelessTypeInt) {
+        return VALUES[namelessTypeInt - 1];
+    }
+}

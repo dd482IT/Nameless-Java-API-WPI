@@ -1,0 +1,20 @@
+package com.namelessmc.java_api.logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class Slf4jLogger extends ApiLogger {
+
+    public static final @org.checkerframework.checker.optional.qual.MaybePresent Slf4jLogger DEFAULT_INSTANCE = new Slf4jLogger(LoggerFactory.getLogger("Nameless-Java-API Debug"));
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Logger logger;
+
+    public Slf4jLogger(final @org.checkerframework.checker.optional.qual.MaybePresent Logger logger) {
+        this.logger = logger;
+    }
+
+    public void log(@org.checkerframework.checker.optional.qual.MaybePresent Slf4jLogger this, final @org.checkerframework.checker.optional.qual.MaybePresent String string) {
+        this.logger.info(string);
+    }
+}

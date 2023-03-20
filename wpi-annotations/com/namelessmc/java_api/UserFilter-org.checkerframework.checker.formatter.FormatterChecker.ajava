@@ -1,0 +1,26 @@
+package com.namelessmc.java_api;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.formatter.FormatterChecker")
+public class UserFilter<FilterValueType> {
+
+    public static  UserFilter<Boolean> BANNED = new UserFilter<>("banned");
+
+    public static  UserFilter<Boolean> VERIFIED = new UserFilter<>("verified");
+
+    public static  UserFilter<Integer> GROUP_ID = new UserFilter<>("group_id");
+
+    public static  UserFilter<String> INTEGRATION = new UserFilter<>("integration");
+
+    private final @org.checkerframework.checker.formatter.qual.Format({}) String filterName;
+
+    public UserFilter(final @org.checkerframework.checker.formatter.qual.Format({}) String filterName) {
+        this.filterName = filterName;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.formatter.qual.Format({}) String name( UserFilter<FilterValueType> this) {
+        return this.filterName;
+    }
+}

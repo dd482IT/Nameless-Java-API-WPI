@@ -1,0 +1,54 @@
+package com.namelessmc.java_api.util;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.*;
+import java.util.function.Function;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class GsonHelper {
+
+    public static  @org.checkerframework.checker.optional.qual.MaybePresent int @org.checkerframework.checker.optional.qual.MaybePresent [] toIntArray(@org.checkerframework.checker.optional.qual.MaybePresent JsonArray jsonArray) {
+        int[] array = new int[jsonArray.size()];
+        for (int i = 0; i < jsonArray.size(); i++) {
+            array[i] = jsonArray.get(i).getAsInt();
+        }
+        return array;
+    }
+
+    public static  @org.checkerframework.checker.optional.qual.MaybePresent long @org.checkerframework.checker.optional.qual.MaybePresent [] toLongArray(JsonArray jsonArray) {
+        long[] array = new long[jsonArray.size()];
+        for (int i = 0; i < jsonArray.size(); i++) {
+            array[i] = jsonArray.get(i).getAsLong();
+        }
+        return array;
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent Set<Integer> toIntegerSet(JsonArray jsonArray) {
+        Set<Integer> set = new HashSet<>();
+        for (JsonElement elem : jsonArray) {
+            set.add(elem.getAsInt());
+        }
+        return Collections.unmodifiableSet(set);
+    }
+
+    public static <T> @org.checkerframework.checker.optional.qual.MaybePresent List<T> toObjectList(@org.checkerframework.checker.optional.qual.MaybePresent JsonArray array, @org.checkerframework.checker.optional.qual.MaybePresent Function<JsonObject, T> constructor) {
+        List<T> list = new ArrayList<>(array.size());
+        for (JsonElement e : array) {
+            list.add(constructor.apply(e.getAsJsonObject()));
+        }
+        return Collections.unmodifiableList(list);
+    }
+
+    public static @org.checkerframework.checker.optional.qual.MaybePresent String getNullableString(@org.checkerframework.checker.optional.qual.MaybePresent JsonObject object, @org.checkerframework.checker.optional.qual.MaybePresent String key) {
+        if (object.has(key)) {
+            JsonElement e = object.get(key);
+            if (!e.isJsonNull()) {
+                return e.getAsString();
+            }
+        }
+        return null;
+    }
+}

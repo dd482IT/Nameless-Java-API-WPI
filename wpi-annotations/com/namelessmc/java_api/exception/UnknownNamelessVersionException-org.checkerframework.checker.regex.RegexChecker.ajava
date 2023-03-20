@@ -1,0 +1,10 @@
+package com.namelessmc.java_api.exception;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.regex.RegexChecker")
+public class UnknownNamelessVersionException extends NamelessException {
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public UnknownNamelessVersionException( String versionName,  String reason) {
+        super("Unknown Nameless version:" + versionName + ": " + reason);
+    }
+}

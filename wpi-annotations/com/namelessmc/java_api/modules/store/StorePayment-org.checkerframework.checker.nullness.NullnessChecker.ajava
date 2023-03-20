@@ -1,0 +1,140 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessAPI;
+import com.namelessmc.java_api.util.GsonHelper;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class StorePayment {
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int id;
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int orderId;
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int gatewayId;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull String transaction;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String amount;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String currency;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String fee;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentStatus status;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Date creationDate;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Date lastUpdateDate;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull StoreCustomer payingCustomer;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull StoreCustomer receivingCustomer;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull List<StorePaymentProduct> products;
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    StorePayment(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessAPI api, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.orderId = json.get("order_id").getAsInt();
+        this.gatewayId = json.get("gateway_id").getAsInt();
+        this.transaction = GsonHelper.getNullableString(json, "transaction");
+        this.amount = json.get("amount").getAsString();
+        this.currency = json.get("currency").getAsString();
+        this.fee = json.get("fee").getAsString();
+        this.status = PaymentStatus.BY_ID[json.get("status_id").getAsInt()];
+        this.creationDate = new Date(json.get("created").getAsLong() * 1000);
+        this.lastUpdateDate = new Date(json.get("last_updated").getAsLong() * 1000);
+        this.payingCustomer = new StoreCustomer(api, json.getAsJsonObject("customer"));
+        this.receivingCustomer = new StoreCustomer(api, json.getAsJsonObject("recipient"));
+        JsonArray productsJson = json.getAsJsonArray("products");
+        this.products = new ArrayList<>(productsJson.size());
+        for (JsonElement element : productsJson) {
+            this.products.add(new StorePaymentProduct(element.getAsJsonObject()));
+        }
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int id() {
+        return id;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int orderId() {
+        return orderId;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int gatewayId() {
+        return gatewayId;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String transaction() {
+        return transaction;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String amount() {
+        return amount;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String currency() {
+        return currency;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String fee() {
+        return fee;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull PaymentStatus status() {
+        return status;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Date creationDate() {
+        return creationDate;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull Date lastUpdatedDate() {
+        return lastUpdateDate;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull StoreCustomer payingCustomer() {
+        return payingCustomer;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull StoreCustomer receivingCustomer() {
+        return receivingCustomer;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.transaction" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull List<StorePaymentProduct> products() {
+        return products;
+    }
+}

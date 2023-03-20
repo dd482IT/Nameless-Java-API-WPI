@@ -1,0 +1,10 @@
+package com.namelessmc.java_api.exception;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class UnknownNamelessVersionException extends NamelessException {
+
+    @org.checkerframework.dataflow.qual.SideEffectFree
+    public UnknownNamelessVersionException(@org.checkerframework.checker.optional.qual.MaybePresent String versionName, @org.checkerframework.checker.optional.qual.MaybePresent String reason) {
+        super("Unknown Nameless version:" + versionName + ": " + reason);
+    }
+}

@@ -1,0 +1,27 @@
+package com.namelessmc.java_api.modules.websend;
+
+import org.checkerframework.checker.index.qual.Positive;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.regex.RegexChecker")
+public class WebsendCommand {
+
+    private final   int id;
+
+    private final  String commandLine;
+
+    public WebsendCommand(final   int id, final  String commandLine) {
+        this.id = id;
+        this.commandLine = commandLine;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public   int id() {
+        return id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String command() {
+        return this.commandLine;
+    }
+}

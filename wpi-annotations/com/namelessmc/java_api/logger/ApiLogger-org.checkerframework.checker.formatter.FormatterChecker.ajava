@@ -1,0 +1,8 @@
+package com.namelessmc.java_api.logger;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.formatter.FormatterChecker")
+public abstract class ApiLogger {
+
+    @org.checkerframework.dataflow.qual.Pure
+    public abstract void log( ApiLogger this,  String string);
+}

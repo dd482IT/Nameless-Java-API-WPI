@@ -1,0 +1,77 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.util.GsonHelper;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class StoreProductField {
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int id;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String identifier;
+
+    // TODO enum
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int typeId;
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean required;
+
+    private final  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int min;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.MonotonicNonNull String regex;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String defaultValue;
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    public StoreProductField(JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.identifier = json.get("identifier").getAsString();
+        this.typeId = json.get("type").getAsInt();
+        this.required = json.get("required").getAsBoolean();
+        this.min = json.get("min").getAsInt();
+        this.regex = GsonHelper.getNullableString(json, "regex");
+        this.defaultValue = json.get("default_value").getAsString();
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int id() {
+        return this.id;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String identifier() {
+        return this.identifier;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int typeId() {
+        return this.typeId;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull boolean required() {
+        return this.required;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int min() {
+        return this.min;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.Nullable String regex() {
+        return this.regex;
+    }
+
+    @org.checkerframework.framework.qual.EnsuresQualifier(expression = { "this.regex" }, qualifier = org.checkerframework.checker.nullness.qual.Nullable.class)
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull String defaultValue() {
+        return this.defaultValue;
+    }
+}

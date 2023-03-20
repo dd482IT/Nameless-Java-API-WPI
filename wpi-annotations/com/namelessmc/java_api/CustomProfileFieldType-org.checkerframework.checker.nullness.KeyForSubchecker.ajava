@@ -1,0 +1,14 @@
+package com.namelessmc.java_api;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public enum CustomProfileFieldType {
+
+    TEXT, TEXT_AREA, DATE;
+
+    private static final  CustomProfileFieldType  [] VALUES = CustomProfileFieldType.values();
+
+    @org.checkerframework.dataflow.qual.Pure
+    public static  CustomProfileFieldType fromNamelessTypeInt(  int namelessTypeInt) {
+        return VALUES[namelessTypeInt - 1];
+    }
+}

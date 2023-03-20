@@ -1,0 +1,77 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessUser;
+import com.namelessmc.java_api.RequestHandler;
+import com.namelessmc.java_api.exception.NamelessException;
+import com.namelessmc.java_api.modules.NamelessModule;
+import java.util.List;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.NullnessChecker")
+public class StoreUser {
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessUser user;
+
+    private final @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull RequestHandler requests;
+
+    public StoreUser(@org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull NamelessUser user) throws NamelessException {
+        this.user = user;
+        this.requests = user.api().requests();
+        user.api().ensureModuleInstalled(NamelessModule.STORE);
+    }
+
+    public void addCredits( @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull float creditsToAdd) throws NamelessException {
+        JsonObject body = new JsonObject();
+        body.addProperty("credits", creditsToAdd);
+        this.requests.post("users/" + this.user.userTransformer() + "/add-credits", body);
+    }
+
+    public void addCredits(int cents) throws NamelessException {
+        // Module does not support adding cents yet
+        this.addCredits(cents * 100f);
+    }
+
+    public void removeCredits( @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull float creditsToRemove) throws NamelessException {
+        JsonObject body = new JsonObject();
+        body.addProperty("credits", creditsToRemove);
+        this.requests.post("users/" + this.user.userTransformer() + "/remove-credits", body);
+    }
+
+    public void removeCredits(int cents) throws NamelessException {
+        // Module does not support removing cents yet
+        this.removeCredits(cents * 100f);
+    }
+
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull float credits() throws NamelessException {
+        JsonObject response = this.requests.get("users/" + this.user.userTransformer() + "/credits");
+        return response.get("credits").getAsFloat();
+    }
+
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int creditsCents() throws NamelessException {
+        JsonObject response = this.requests.get("users/" + this.user.userTransformer() + "/credits");
+        return response.get("cents").getAsInt();
+    }
+
+    public  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int customerId() throws NamelessException {
+        JsonObject response = this.requests.get("users/" + this.user.userTransformer() + "/credits");
+        return response.get("customer_id").getAsInt();
+    }
+
+    public void createOrder(StoreCustomer purchaser, StoreCustomer recipient, List<StoreProduct> products) throws NamelessException {
+        JsonArray productIds = new JsonArray(products.size());
+        for (int i = 0; i < products.size(); i++) {
+            productIds.add(products.get(i).id());
+        }
+        this.createOrder(purchaser.id(), recipient.id(), productIds);
+    }
+
+    public void createOrder( @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int purchaserCustomerId,  @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull int recipientCustomerId, @org.checkerframework.checker.initialization.qual.Initialized @org.checkerframework.checker.nullness.qual.NonNull JsonArray productIds) throws NamelessException {
+        JsonObject body = new JsonObject();
+        body.addProperty("user", this.user.userTransformer());
+        body.addProperty("customer", purchaserCustomerId);
+        body.addProperty("recipient", recipientCustomerId);
+        body.add("products", productIds);
+        this.requests.post("store/order/create", body);
+    }
+}

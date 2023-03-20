@@ -1,0 +1,126 @@
+package com.namelessmc.java_api.modules.store;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessAPI;
+import com.namelessmc.java_api.util.GsonHelper;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class StorePayment {
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int id;
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int orderId;
+
+    private final  @org.checkerframework.checker.optional.qual.MaybePresent int gatewayId;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String transaction;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String amount;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String currency;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent String fee;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent PaymentStatus status;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Date creationDate;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent Date lastUpdateDate;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent StoreCustomer payingCustomer;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent StoreCustomer receivingCustomer;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent List<StorePaymentProduct> products;
+
+    StorePayment(@org.checkerframework.checker.optional.qual.MaybePresent NamelessAPI api, @org.checkerframework.checker.optional.qual.MaybePresent JsonObject json) {
+        this.id = json.get("id").getAsInt();
+        this.orderId = json.get("order_id").getAsInt();
+        this.gatewayId = json.get("gateway_id").getAsInt();
+        this.transaction = GsonHelper.getNullableString(json, "transaction");
+        this.amount = json.get("amount").getAsString();
+        this.currency = json.get("currency").getAsString();
+        this.fee = json.get("fee").getAsString();
+        this.status = PaymentStatus.BY_ID[json.get("status_id").getAsInt()];
+        this.creationDate = new Date(json.get("created").getAsLong() * 1000);
+        this.lastUpdateDate = new Date(json.get("last_updated").getAsLong() * 1000);
+        this.payingCustomer = new StoreCustomer(api, json.getAsJsonObject("customer"));
+        this.receivingCustomer = new StoreCustomer(api, json.getAsJsonObject("recipient"));
+        JsonArray productsJson = json.getAsJsonArray("products");
+        this.products = new ArrayList<>(productsJson.size());
+        for (JsonElement element : productsJson) {
+            this.products.add(new StorePaymentProduct(element.getAsJsonObject()));
+        }
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int id() {
+        return id;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int orderId() {
+        return orderId;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  @org.checkerframework.checker.optional.qual.MaybePresent int gatewayId() {
+        return gatewayId;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String transaction() {
+        return transaction;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String amount() {
+        return amount;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String currency() {
+        return currency;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent String fee() {
+        return fee;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent PaymentStatus status() {
+        return status;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent Date creationDate() {
+        return creationDate;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent Date lastUpdatedDate() {
+        return lastUpdateDate;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent StoreCustomer payingCustomer() {
+        return payingCustomer;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent StoreCustomer receivingCustomer() {
+        return receivingCustomer;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public @org.checkerframework.checker.optional.qual.MaybePresent List<StorePaymentProduct> products() {
+        return products;
+    }
+}

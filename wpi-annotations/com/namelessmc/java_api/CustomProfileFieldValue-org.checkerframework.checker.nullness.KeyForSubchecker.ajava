@@ -1,0 +1,27 @@
+package com.namelessmc.java_api;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.nullness.KeyForSubchecker")
+public class CustomProfileFieldValue {
+
+    private final  CustomProfileField field;
+
+    private final  String value;
+
+    CustomProfileFieldValue( CustomProfileField field,  String value) {
+        this.field = field;
+        this.value = value;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  CustomProfileField field() {
+        return this.field;
+    }
+
+    @org.checkerframework.dataflow.qual.Pure
+    public  String value() {
+        return value;
+    }
+}

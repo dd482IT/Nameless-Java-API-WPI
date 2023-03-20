@@ -1,0 +1,29 @@
+package com.namelessmc.java_api.modules.discord;
+
+import com.google.gson.JsonObject;
+import com.namelessmc.java_api.NamelessUser;
+import com.namelessmc.java_api.RequestHandler;
+import com.namelessmc.java_api.exception.NamelessException;
+import com.namelessmc.java_api.modules.NamelessModule;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+@org.checkerframework.framework.qual.AnnotatedFor("org.checkerframework.checker.optional.OptionalChecker")
+public class DiscordUser {
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent NamelessUser user;
+
+    private final @org.checkerframework.checker.optional.qual.MaybePresent RequestHandler requests;
+
+    public DiscordUser(@org.checkerframework.checker.optional.qual.MaybePresent NamelessUser user) throws NamelessException {
+        this.user = user;
+        this.requests = user.api().requests();
+        user.api().ensureModuleInstalled(NamelessModule.DISCORD_INTEGRATION);
+    }
+
+    public void updateDiscordRoles(final long[] roleIds) throws NamelessException {
+        final JsonObject post = new JsonObject();
+        post.addProperty("user", this.user.id());
+        post.add("roles", this.requests.gson().toJsonTree(roleIds));
+        this.requests.post("discord/set-roles", post);
+    }
+}
