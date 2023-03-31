@@ -57,6 +57,7 @@
 						<arg>-Awarns</arg>
 						<arg>-AshowPrefixInWarningMessages</arg>
 						<arg>-Aajava=/tmp/WPITEMP-Nameless-API</arg>
+						<arg>-AcheckPurityAnnotations</arg>
 					</compilerArgs>
 					<showWarnings>true</showWarnings>
 				</configuration>
