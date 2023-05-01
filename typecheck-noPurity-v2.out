@@ -1,0 +1,12 @@
+[WARNING] /Users/daniel/Documents/NJIT/WPI-Research/experiments-live/Nameless-Java-API-WPI/src/main/java/com/namelessmc/java_api/FilteredUserListBuilder.java:[30,27] [nullness:argument] incompatible argument for parameter obj of requireNonNull.
+  found   : T extends @Initialized @Nullable Object
+  required: T extends @Initialized @NonNull Object
+[WARNING] /Users/daniel/Documents/NJIT/WPI-Research/experiments-live/Nameless-Java-API-WPI/src/main/java/com/namelessmc/java_api/modules/NamelessModule.java:[81,31] [nullness:contracts.precondition] precondition of ((NamelessModule)obj).name is not satisfied.
+  found   : (NamelessModule)obj.downloadLink is @Nullable
+  required: (NamelessModule)obj.downloadLink is @Nullable
+[WARNING] /Users/daniel/Documents/NJIT/WPI-Research/experiments-live/Nameless-Java-API-WPI/src/main/java/com/namelessmc/java_api/integrations/DetailedMinecraftIntegrationData.java:[15,63] [nullness:method.invocation] call to identifier() not allowed on the given receiver.
+  found   : @UnderInitialization(com.namelessmc.java_api.integrations.DetailedIntegrationData.class) @NonNull IntegrationData
+  required: @Initialized @NonNull IntegrationData
+[WARNING] /Users/daniel/Documents/NJIT/WPI-Research/experiments-live/Nameless-Java-API-WPI/src/main/java/com/namelessmc/java_api/integrations/DetailedDiscordIntegrationData.java:[12,46] [nullness:method.invocation] call to identifier() not allowed on the given receiver.
+  found   : @UnderInitialization(com.namelessmc.java_api.integrations.DetailedDiscordIntegrationData.class) @NonNull IntegrationData
+  required: @Initialized @NonNull IntegrationData
