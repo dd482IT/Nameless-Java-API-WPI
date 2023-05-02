@@ -33,7 +33,7 @@
 						<path>
 							<groupId>org.checkerframework</groupId>
 							<artifactId>checker</artifactId>
-							<version>3.32.1-SNAPSHOT</version>
+							<version>3.33.1-SNAPSHOT</version>
 						</path>
 					</annotationProcessorPaths>
 					<annotationProcessors>
@@ -53,6 +53,7 @@
 						<arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
 						<arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
 						<arg>-Awarns</arg>
+						<arg>-AcheckPurityAnnotations</arg>
 					</compilerArgs>
 					<showWarnings>true</showWarnings>
 				</configuration>
@@ -88,7 +89,7 @@
 		<dependency>
 			<groupId>org.checkerframework</groupId>
 			<artifactId>checker-qual</artifactId>
-			<version>3.32.0</version>
+			<version>3.33.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
