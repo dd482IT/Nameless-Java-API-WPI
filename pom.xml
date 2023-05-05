@@ -33,7 +33,7 @@
 						<path>
 							<groupId>org.checkerframework</groupId>
 							<artifactId>checker</artifactId>
-							<version>3.32.1-SNAPSHOT</version>
+							<version>3.34.1-SNAPSHOT</version>
 						</path>
 					</annotationProcessorPaths>
 					<annotationProcessors>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>org.checkerframework</groupId>
 			<artifactId>checker-qual</artifactId>
-			<version>3.32.0</version>
+			<version>3.34.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
