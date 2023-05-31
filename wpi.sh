@@ -47,7 +47,7 @@ while : ; do
     if [[ ${DEBUG} == 1 ]]; then
 	echo "entering iteration ${count}"
     fi
-    ${BUILD_CMD}
+    ${BUILD_CMD} > typecheck.out
     ${CLEAN_CMD}
     # This mkdir is needed when the project has subprojects.
     mkdir -p "${WPITEMPDIR}"
